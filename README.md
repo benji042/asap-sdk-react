@@ -15,15 +15,15 @@ The ASAP React SDK is a React component library designed to simplify Web3 paymen
 Install the package via npm:
 
 ```bash
-npm install @asap-sdk/react
+npm install @benji042/asap-sdk-react
 # or
-yarn add @asap-sdk/react
+yarn add @benji042/asap-sdk-react
 ```
 
 ## Basic Usage
 
 ```tsx
-import { AsapButton } from '@asap-sdk/react';
+import { AsapButton } from '@benji042/asap-sdk-react';
 
 function App() {
   return (
