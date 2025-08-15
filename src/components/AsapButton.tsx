@@ -71,6 +71,11 @@ const AsapButton: React.FC<AsapButtonProps> = ({
             alert("Payment completed")
             setPaying(false)
             setShowModal(false)
+          },
+          onError: (error) => {
+            alert("Payment failed")
+            setPaying(false)
+            setShowModal(false)
           }
         }
       )
@@ -120,7 +125,7 @@ const AsapButton: React.FC<AsapButtonProps> = ({
                 className="asap-modal-button wallet"
                 // onClick={() => window.location.href = "https://asapcrypto.xyz/"}
               >
-                <a href="https://asapcrypto.xyz/" target='_blank'>Pay with your ASAP wallet</a>
+                <a style={{"textDecoration": "none", "color": "black"}} href="https://asapcrypto.xyz/" target='_blank'>Pay with your ASAP wallet</a>
                 <Wallet size={24} color='#333'/>
               </button>
             </div>
