@@ -42,8 +42,8 @@ export default function ReviewPayment() {
                                 </div>
                                 <div className="m-0">
                                     <DropDown.Root>
-                                        <DropDown.Trigger asChild>
-                                            {chainOpen ? <ChevronUp onClick={() => setChainOpen(false)} className="cursor-pointer h-4 w-4" /> : <ChevronDown onClick={() => setChainOpen(true)} className="cursor-pointer h-4 w-4" />}
+                                        <DropDown.Trigger asChild onClick={() => setChainOpen(!chainOpen)}>
+                                            {chainOpen ? <ChevronUp className="cursor-pointer h-4 w-4" /> : <ChevronDown className="cursor-pointer h-4 w-4" />}
                                         </DropDown.Trigger>
                                         <DropDown.Portal>
                                             <DropDown.Content className="bg-white rounded-md p-2">
@@ -70,14 +70,14 @@ export default function ReviewPayment() {
                             <div className="flex flex-row items-center justify-between">
                                 <div className="m-0 flex">
                                     <p className="border-r-1 border-gray-600 p-2">
-                                        <img src={CURRENCIES.filter((currency) => currency.id === transaction.currency)[0].logo} alt={`${transaction.currency} logo`} className="h-6 w-6" />
+                                        <img src={CURRENCIES.filter((currency) => currency.id === transaction.currency)[0].logo} alt={`${transaction.currency} logo`} className="h-4 w-4 md:h-6 md:w-6" />
                                     </p>
-                                    <span className="p-2 font-monserrat font-medium text-md">{transaction.currency.toUpperCase()}</span>
+                                    <span className="p-2 font-monserrat font-medium text-sm md:text-md">{transaction.currency.toUpperCase()}</span>
                                 </div>
                                 <div className="m-0">
                                     <DropDown.Root>
-                                        <DropDown.Trigger asChild>
-                                            {currencyOpen ? <ChevronUp onClick={() => setCurrencyOpen(false)} className="cursor-pointer h-4 w-4" /> : <ChevronDown onClick={() => setCurrencyOpen(true)} className="cursor-pointer h-4 w-4" />}
+                                        <DropDown.Trigger asChild onClick={() => setCurrencyOpen(!currencyOpen)}>
+                                            {currencyOpen ? <ChevronUp className="cursor-pointer h-4 w-4" /> : <ChevronDown className="cursor-pointer h-4 w-4" />}
                                         </DropDown.Trigger>
                                         <DropDown.Portal>
                                             <DropDown.Content className="bg-white rounded-md p-2">
@@ -85,9 +85,9 @@ export default function ReviewPayment() {
                                                     <DropDown.Item key={index}>
                                                         <div className="m-0 flex cursor-pointer" onClick={() => setCurrency(currency.id)}>
                                                             <p className="p-2">
-                                                                <img src={currency.logo} alt={`${currency.name} logo`} className="h-6 w-6" />
+                                                                <img src={currency.logo} alt={`${currency.name} logo`} className="h-4 w-4 md:h-6 md:w-6" />
                                                             </p>
-                                                            <span className="p-2 font-monserrat font-medium text-md">{currency.name}</span>
+                                                            <span className="p-2 font-monserrat font-medium text-sm md:text-md">{currency.name}</span>
                                                         </div>
                                                     </DropDown.Item>
                                                 ))}
@@ -103,7 +103,7 @@ export default function ReviewPayment() {
                     <div className="flex flex-row items-center">
                         <div className="basis-1/3 flex items-center justify-center">
                             <div className="m-0">
-                                <p className="text-sm font-medium font-monserrat text-gray-600">You will pay</p>
+                                <p className="text-xs md:text-sm font-medium font-monserrat text-gray-600">You will pay</p>
                                 <p className="text-lg font-bold font-monserrat text-black">{transaction.amountInCryptoCurrency} {transaction.currency.toUpperCase()}</p>
                             </div>
                         </div>
@@ -112,7 +112,7 @@ export default function ReviewPayment() {
                         </div>
                         <div className="basis-1/3 flex items-center justify-center">
                             <div className="m-0">
-                                <p className="text-sm font-medium font-monserrat text-gray-600">For</p>
+                                <p className="text-xs md:text-sm font-medium font-monserrat text-gray-600">For</p>
                                 <p className="text-lg font-bold font-monserrat text-black">&#8358;{transaction.amountInLocalCurrency}</p>
                             </div>
                         </div>

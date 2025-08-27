@@ -177,7 +177,7 @@ export default function PaymentModal () {
                                     </div>
                                 </div>
                             }
-                            <span className="text-black font-monserrat font-bold text-xl mt-1">
+                            <span className="text-black font-monserrat font-bold text-lg md:text-xl mt-1">
                                 {selectedFlow.id !== 6 && selectedFlow.title}
                                 {selectedFlow.id === 6 && transaction.status === "pending" && "Transaction Pending"}
                                 {selectedFlow.id === 6 && transaction.status === "failed" && "Transaction Failed"}
@@ -185,7 +185,7 @@ export default function PaymentModal () {
                                 {selectedFlow.id === 6 && transaction.status === "processing" && selectedFlow.title}
                             </span>
                         </Dialog.Title>
-                        <Dialog.Description className="mb-4 mt-1 text-sm leading-normal text-center text-gray-600 font-monserrat font-medium">
+                        <Dialog.Description className="mb-4 mt-1 text-sm md:text-sm leading-normal text-center text-gray-600 font-monserrat font-medium">
                             {selectedFlow.id !== 6 && selectedFlow.description}
                             {selectedFlow.id === 6 && transaction.status === "pending" && "Your transaction have been initiated and waiting for confirmation"}
                             {selectedFlow.id === 6 && transaction.status === "failed" && "Something went wrong. Your transacion couldn't be completed"}
