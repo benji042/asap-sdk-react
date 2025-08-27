@@ -40,7 +40,7 @@ createAppKit({
   },
   themeMode: 'dark',
   themeVariables: {
-    "--w3m-z-index": 1000,
+    "--w3m-z-index": 9999999,
   }
 })
 

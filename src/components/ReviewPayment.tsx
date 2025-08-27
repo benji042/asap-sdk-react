@@ -1,17 +1,27 @@
 import * as DropDown from "@radix-ui/react-dropdown-menu";
-import { ChevronDown, ChevronUp, EqualApproximately } from "lucide-react";
+import { ChevronDown, EqualApproximately } from "lucide-react";
 import CountDown from "./CountDown";
 import { motion, usePresenceData } from "motion/react";
 import { CHAINS, CURRENCIES } from "../lib/constants";
 import useStore from "../store";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function ReviewPayment() {
     const { transaction, setChain, setCurrency } = useStore();
-    const [chainOpen, setChainOpen] = useState(false);
-    const [currencyOpen, setCurrencyOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState<boolean>(false);
+    // const [chainOpen, setChainOpen] = useState(false);
+    // const [currencyOpen, setCurrencyOpen] = useState(false);
 
     const direction = usePresenceData();
+
+    const handleWindowSizeChange = () => {
+        console.log(window.innerWidth, window.innerWidth <= 768)
+        setIsMobile(window.innerWidth <= 768);
+    }
+
+    useEffect(() => {
+        handleWindowSizeChange();
+    }, [])
     
     return (
         <motion.div
@@ -38,12 +48,12 @@ export default function ReviewPayment() {
                                     <p className="border-r-1 border-gray-600 p-2">
                                         <img src={CHAINS.filter((chain) => chain.id === transaction.chain)[0].logo} alt={`${transaction.chain} logo`} className="h-6 w-6" />
                                     </p>
-                                    <span className="p-2 font-monserrat font-medium text-md">{transaction.chain}</span>
+                                    <span className="p-2 font-monserrat font-medium text-md">{isMobile && transaction.chain.length > 4 ? `${transaction.chain.slice(0, 4)}...` : transaction.chain}</span>
                                 </div>
                                 <div className="m-0">
                                     <DropDown.Root>
-                                        <DropDown.Trigger asChild onClick={() => setChainOpen(!chainOpen)}>
-                                            {chainOpen ? <ChevronUp className="cursor-pointer h-4 w-4" /> : <ChevronDown className="cursor-pointer h-4 w-4" />}
+                                        <DropDown.Trigger asChild>
+                                            <ChevronDown className="cursor-pointer h-4 w-4" />
                                         </DropDown.Trigger>
                                         <DropDown.Portal>
                                             <DropDown.Content className="bg-white rounded-md p-2">
@@ -70,14 +80,14 @@ export default function ReviewPayment() {
                             <div className="flex flex-row items-center justify-between">
                                 <div className="m-0 flex">
                                     <p className="border-r-1 border-gray-600 p-2">
-                                        <img src={CURRENCIES.filter((currency) => currency.id === transaction.currency)[0].logo} alt={`${transaction.currency} logo`} className="h-4 w-4 md:h-6 md:w-6" />
+                                        <img src={CURRENCIES.filter((currency) => currency.id === transaction.currency)[0].logo} alt={`${transaction.currency} logo`} className="h-6 w-6" />
                                     </p>
-                                    <span className="p-2 font-monserrat font-medium text-sm md:text-md">{transaction.currency.toUpperCase()}</span>
+                                    <span className="p-2 font-monserrat font-medium text-md">{transaction.currency.toUpperCase()}</span>
                                 </div>
                                 <div className="m-0">
                                     <DropDown.Root>
-                                        <DropDown.Trigger asChild onClick={() => setCurrencyOpen(!currencyOpen)}>
-                                            {currencyOpen ? <ChevronUp className="cursor-pointer h-4 w-4" /> : <ChevronDown className="cursor-pointer h-4 w-4" />}
+                                        <DropDown.Trigger asChild>
+                                            <ChevronDown className="cursor-pointer h-4 w-4" />
                                         </DropDown.Trigger>
                                         <DropDown.Portal>
                                             <DropDown.Content className="bg-white rounded-md p-2">
@@ -85,9 +95,9 @@ export default function ReviewPayment() {
                                                     <DropDown.Item key={index}>
                                                         <div className="m-0 flex cursor-pointer" onClick={() => setCurrency(currency.id)}>
                                                             <p className="p-2">
-                                                                <img src={currency.logo} alt={`${currency.name} logo`} className="h-4 w-4 md:h-6 md:w-6" />
+                                                                <img src={currency.logo} alt={`${currency.name} logo`} className="h-6 w-6" />
                                                             </p>
-                                                            <span className="p-2 font-monserrat font-medium text-sm md:text-md">{currency.name}</span>
+                                                            <span className="p-2 font-monserrat font-medium text-md">{currency.name}</span>
                                                         </div>
                                                     </DropDown.Item>
                                                 ))}
