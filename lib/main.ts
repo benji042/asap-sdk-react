@@ -1,1 +1,1 @@
-export { ASAPModal } from "./components/ASAPModal"
+export { ASAP } from "./components/ASAP"
