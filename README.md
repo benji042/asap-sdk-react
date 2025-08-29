@@ -1,10 +1,10 @@
 # ASAP React SDK
 
-The ASAP React SDK provides a streamlined way to integrate the ASAP crypto payment gateway into your React application. It offers a single, easy-to-use component (`<ASAPModal />`) that handles the entire payment flow within a self-contained modal, from transaction review to wallet connection and status tracking.
+The ASAP React SDK provides a streamlined way to integrate the ASAP crypto payment gateway into your React application. It offers a single, easy-to-use component (`<ASAP />`) that handles the entire payment flow within a self-contained modal, from transaction review to wallet connection and status tracking.
 
 ## Features
 
--   **Simple Integration**: Drop the `<ASAPModal />` component into your app to get started.
+-   **Simple Integration**: Drop the `<ASAP />` component into your app to get started.
 -   **Complete Payment Flow**: A multi-step modal guides users through reviewing their payment, choosing a payment method, connecting their wallet, and viewing the transaction status.
 -   **Multiple Payment Options**:
     -   Pay with an ASAP account (Phone & PIN).
@@ -41,7 +41,7 @@ This library requires `react` and `react-dom` as peer dependencies. Please ensur
 
 ## Usage
 
-The SDK exports a single component, `ASAPModal`. It includes all necessary context providers and handles its own state. The component's CSS is automatically injected, so no separate CSS import is required.
+The SDK exports a single component, `<ASAP />`. It includes all necessary context providers and handles its own state. The component's CSS is automatically injected, so no separate CSS import is required.
 
 Here's a basic example of how to use it in your application:
 
@@ -57,7 +57,7 @@ function MyPaymentPage() {
       alignItems: 'center', 
       height: '100vh' 
     }}>
-      {/* The ASAPModal component renders a button that triggers the payment flow */}
+      {/* The ASAP component renders a button that triggers the payment flow */}
       <ASAP />
     </div>
   );
